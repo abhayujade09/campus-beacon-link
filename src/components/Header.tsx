@@ -24,16 +24,16 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, activeSection }) => 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass-card border-b border-card-border/50">
       <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center space-x-3 cursor-pointer" onClick={() => onNavigate('dashboard')}>
             <div className="relative">
-              <img src={logoImage} alt="Campus Lost & Found" className="h-12 w-12 rounded-xl" />
+              <img src={logoImage} alt="Campus Lost & Found" className="h-10 w-10 rounded-xl" />
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-xl animate-pulse-slow"></div>
             </div>
             <div>
-              <h1 className="text-xl font-bold text-gradient">Campus Lost & Found</h1>
-              <p className="text-xs text-muted-foreground">University Hub</p>
+              <h1 className="text-lg font-bold text-gradient">Campus Lost & Found</h1>
+              <p className="text-xs text-muted-foreground/80">University Hub</p>
             </div>
           </div>
 
@@ -73,7 +73,12 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, activeSection }) => 
             </Button>
 
             {/* User Profile */}
-            <Button variant="glass" size="sm" className="hidden sm:flex">
+            <Button 
+              variant="glass" 
+              size="sm" 
+              className="hidden sm:flex"
+              onClick={() => onNavigate('profile')}
+            >
               <User className="h-4 w-4 mr-2" />
               Profile
             </Button>
@@ -107,7 +112,14 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, activeSection }) => 
                   {item.label}
                 </Button>
               ))}
-              <Button variant="glass" className="justify-start mt-4">
+              <Button 
+                variant="glass" 
+                className="justify-start mt-4"
+                onClick={() => {
+                  onNavigate('profile');
+                  setIsMenuOpen(false);
+                }}
+              >
                 <User className="h-4 w-4 mr-2" />
                 Profile
               </Button>

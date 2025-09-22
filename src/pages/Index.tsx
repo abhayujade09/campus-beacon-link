@@ -4,6 +4,7 @@ import { Hero } from '@/components/Hero';
 import { Dashboard } from '@/components/Dashboard';
 import { ItemGrid } from '@/components/ItemGrid';
 import { ReportForm } from '@/components/ReportForm';
+import { UserProfile } from '@/components/UserProfile';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('dashboard');
@@ -29,6 +30,8 @@ const Index = () => {
         return <ReportForm onSubmit={() => setActiveSection('dashboard')} />;
       case 'history':
         return <ItemGrid type="all" title="Activity History" />;
+      case 'profile':
+        return <UserProfile onNavigate={handleNavigate} />;
       default:
         return (
           <>
